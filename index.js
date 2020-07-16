@@ -15,7 +15,7 @@ function createMenuItem(name, price, category) {
 
 
 /* Task 1b: use your function to create 3 more menu items. You may add any items to the menu that you'd like */
-
+console.log( "-------------------------------- Task 1 ---------------------------------------" );
 
 console.log( createMenuItem('tacos', 8, 'Lunch') );
 console.log( createMenuItem('pizza', 10, 'Dinner') );
@@ -42,6 +42,8 @@ burger.discount = function ( person ) {
   }
 };
 
+console.log( "-------------------------------- Task 2 ---------------------------------------" );
+
 console.log(burger.discount("teacher"));
 console.log(burger.discount("student"));
 console.log(burger.discount("public"));
@@ -62,6 +64,7 @@ const reviews = [{name: "Daniela", rating: 5, feedback:"Beautiful atmosphere and
 
 /* Task 3: Console.log just Julius' feedback */
 
+console.log( "-------------------------------- Task 3 ---------------------------------------" );
 
 console.log( reviews[5].feedback );
 
@@ -76,6 +79,8 @@ reviews[reviews.length] = {
   feedback: "Place is good.",
 };
 
+console.log( "-------------------------------- Task 4 ---------------------------------------" );
+
 console.log( reviews );
 
 
@@ -85,6 +90,8 @@ console.log( reviews );
 great for getting work done on weekdays" */
 
 reviews[7].feedback = "this place is chill with really cool people, great for getting work done on weekdays.";
+
+console.log( "-------------------------------- Task 5 ---------------------------------------" );
 
 console.log( reviews[7] ); // question meant feedback not rating i'm assuming
 
@@ -112,6 +119,8 @@ function getReviewByIndex(reviews, index) {
 
 };
 
+console.log( "-------------------------------- Task 6 ---------------------------------------" );
+
 console.log( getReviewByIndex(reviews, 0) );
   
 
@@ -138,6 +147,8 @@ return `${reduce.name} gave the restaurant a ${reduce.rating} star review and th
 
 };
 
+console.log( "-------------------------------- Task 7 ---------------------------------------" );
+
 console.log( getLastReview( reviews ) );
 
 
@@ -158,9 +169,23 @@ console.log( getLastReview( reviews ) );
     {name:"Lauren", rating: 4, feedback: "Absolutely love that they have karaoke Fridays! Food and drink selection is okay."}]
 */
 
- function getReviewByRating(/* code here */) {
-    /* code here */
-  }
+ function getReviewByRating( arr, rat ) {
+    const newArr = [];
+    let count = 0;
+
+    for( let i = 0; i < arr.length; i++ ) {
+      if( arr[i].rating >= rat && arr[i].rating < (rat + 1) ) {
+        newArr[count] = arr[i]; 
+        count++;
+      }
+    };
+    
+  return newArr;
+};
+
+console.log( "-------------------------------- Stretch 1 ---------------------------------------" );
+
+console.log( getReviewByRating(reviews, 4) );
 
   
 /** STRETCH 2: Write a function called 'getLongestReview' that returns an array containing all reviews longer than 15 words. 
@@ -177,9 +202,24 @@ and should return an array of objects.
     {name: "Julius", rating: 2, feedback: "I was largely unimpressed by this venue. Nothing special on the menu and too expensive. 
     The atmosphere is polarizing, and not for me, but I think some would like it." }]
 */
-  function getLongReviews(/* code here */) {
-    /* code here */
-  }
+  function getLongReviews( arr ) {
+    const newArr = [];
+    let count = 0;
+    for( let i = 0; i < arr.length; i++ ) {
+      let words = arr[i].feedback.split(" ");
+      
+      if( words.length > 15 ) {
+        newArr[count] = arr[i]; 
+        count++;
+      }
+    };
+
+    return newArr;
+  };
+
+  console.log( "-------------------------------- Stretch 2 ---------------------------------------" );
+
+  console.log( getLongReviews(reviews) );
   
 
 /* STRETCH 3:  This challenge is not related to the data above! 
@@ -200,7 +240,17 @@ The returned object should have the following characteristics:
 */
 
 
-function carMaker(/* code here */) {
-    /* code here */
-    
-}
+function carMaker( num ) {
+    const obj = {
+      odometer: num,
+      drive: function( distance ) {
+        return `Your odometer started at ${this.odometer}, you drove ${distance} miles, and now the odometer reads ${this.odometer + distance}.`;
+      },
+    };
+
+    return obj;
+};
+
+console.log( "-------------------------------- Stretch 3 ---------------------------------------" );
+
+console.log( carMaker(5000).drive(55) );
